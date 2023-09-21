@@ -1,13 +1,10 @@
 package com.jacobs.vinyl.restService;
 
-import com.jacobs.vinyl.dao.Release;
-import com.jacobs.vinyl.dao.ReleaseDTO;
+import com.jacobs.vinyl.repository.Release;
+import com.jacobs.vinyl.dto.ReleaseDTO;
 import com.jacobs.vinyl.service.ReleaseService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -34,5 +31,15 @@ public class ReleaseController {
                 .stream()
                 .map(ReleaseDTO::toReleaseDTO)
                 .collect(Collectors.toList());
+    }
+
+//    @PutMapping(value = "/release/{releaseID}")
+//    Release updateRelease (@RequestBody ReleaseDTO updatedRelease) {
+//        return releaseService.updateRelease(updatedRelease);
+//
+//    }
+    @DeleteMapping(value = "/release/{releaseId}")
+    public void deleteRelease(@PathVariable int releaseId) {
+        releaseService.deleteRelease(releaseId);
     }
 }

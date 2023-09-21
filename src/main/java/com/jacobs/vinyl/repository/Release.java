@@ -1,4 +1,4 @@
-package com.jacobs.vinyl.dao;
+package com.jacobs.vinyl.repository;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

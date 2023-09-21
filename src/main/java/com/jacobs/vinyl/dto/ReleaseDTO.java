@@ -1,4 +1,6 @@
-package com.jacobs.vinyl.dao;
+package com.jacobs.vinyl.dto;
+
+import com.jacobs.vinyl.repository.Release;
 
 public class ReleaseDTO {
 

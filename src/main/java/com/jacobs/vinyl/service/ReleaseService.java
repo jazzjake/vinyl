@@ -1,7 +1,7 @@
 package com.jacobs.vinyl.service;
 
-import com.jacobs.vinyl.dao.Release;
-import com.jacobs.vinyl.dao.ReleaseRepository;
+import com.jacobs.vinyl.repository.Release;
+import com.jacobs.vinyl.repository.ReleaseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,5 +26,12 @@ public class ReleaseService {
     public List<Release> getAllReleases() {
         return StreamSupport.stream(releaseRepository.findAll().spliterator(), false)
                 .collect(Collectors.toList());
+    }
+
+        //    public Release updateRelease() {
+        //        releaseRepository.save()
+        //    }
+    public void deleteRelease(int releaseId) {
+        releaseRepository.deleteById(releaseId);
     }
 }
