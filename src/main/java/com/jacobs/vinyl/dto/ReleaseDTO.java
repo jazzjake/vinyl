@@ -1,29 +1,36 @@
 package com.jacobs.vinyl.dto;
 
+import com.jacobs.vinyl.repository.Genre;
 import com.jacobs.vinyl.repository.Release;
+
+import java.util.List;
 
 public class ReleaseDTO {
 
-    private int id;
+    private int releaseId;
     private String artist;
     private String title;
     private String label;
     private String year;
+    private List<Genre> genres;
 
     public ReleaseDTO(int id, String artist, String title, String label, String year) {
-        this.id = id;
+        this.releaseId = id;
         this.artist = artist;
         this.title = title;
         this.label = label;
         this.year = year;
     }
 
-    public int getId() {
-        return id;
+    public ReleaseDTO() {
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public int getReleaseId() {
+        return releaseId;
+    }
+
+    public void setReleaseId(int releaseId) {
+        this.releaseId = releaseId;
     }
 
     public String getArtist() {
@@ -58,20 +65,18 @@ public class ReleaseDTO {
         this.year = year;
     }
 
-    public static ReleaseDTO toReleaseDTO(Release release) {
-        return new ReleaseDTO(
-                release.getId(),
-                release.getArtist(),
-                release.getTitle(),
-                release.getLabel(),
-                release.getReleaseYear()
-        );
+    public List<Genre> getGenres() {
+        return genres;
+    }
+
+    public void setGenres(List<Genre> genres) {
+        this.genres = genres;
     }
 
     @Override
     public String toString() {
         return "ReleaseDTO{" +
-                "id=" + id +
+                "id=" + releaseId +
                 ", artist='" + artist + '\'' +
                 ", title='" + title + '\'' +
                 ", label='" + label + '\'' +

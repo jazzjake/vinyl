@@ -19,13 +19,19 @@ public class ReleaseService {
         this.releaseRepository = releaseRepository;
     }
 
-    public Release createRelease(String artist, String title, String label) {
-        return releaseRepository.save(new Release(artist, title, label));
+    public Release createRelease(Release release) {
+        Release savedRelease = releaseRepository.save(release);
+        release.getGenres().forEach(g -> g.setRelease(savedRelease));
+        return releaseRepository.save(savedRelease);
     }
 
     public List<Release> getAllReleases() {
         return StreamSupport.stream(releaseRepository.findAll().spliterator(), false)
                 .collect(Collectors.toList());
+    }
+
+    public Release getRelease(int releaseId) {
+        return releaseRepository.findById(releaseId).orElse(new Release());
     }
 
         //    public Release updateRelease() {
