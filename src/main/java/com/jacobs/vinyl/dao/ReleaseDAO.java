@@ -51,7 +51,7 @@ public class ReleaseDAO {
             PreparedStatement statement = connection.prepareStatement(INSERT_SQL_RELEASE);
             statement.setString(1, release.getArtist());
             statement.setString(2, release.getTitle());
-            statement.setString(3, release.getLabel());
+           // statement.setString(3, release.getLabel());
             statement.executeUpdate();
         }
     }
@@ -65,7 +65,7 @@ public class ReleaseDAO {
                 String artist = resultSet.getString("artist");
                 String title = resultSet.getString("title");
                 String label = resultSet.getString("label");
-                releases.add(new Release(artist, title, label));
+                releases.add(new Release(artist, title));
             }
             return releases;
         }

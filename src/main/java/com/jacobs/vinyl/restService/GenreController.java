@@ -4,13 +4,11 @@ import com.jacobs.vinyl.dto.GenreDTO;
 import com.jacobs.vinyl.dto.LabelDTO;
 import com.jacobs.vinyl.repository.Genre;
 import com.jacobs.vinyl.repository.Label;
+import com.jacobs.vinyl.repository.Release;
 import com.jacobs.vinyl.service.GenreService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -28,10 +26,19 @@ public class GenreController {
     @GetMapping(value = "/genres")
     public List<GenreDTO> getAllGenres() {
         List<Genre> genres = genreService.getAllGenres();
-        return genres.stream()
+        List<GenreDTO> genreDTOS = genres.stream()
                 .map(this::toGenreDTO)
                 .collect(Collectors.toList());
+        return genreDTOS;
     }
+
+    @PutMapping(value = "/genre")
+    public GenreDTO updateGenre(@RequestBody GenreDTO genreDTO) {
+        Genre genre = genreService.updateGenre(toGenre(genreDTO));
+        return toGenreDTO(genre);
+
+    }
+
     @PostMapping(value = "/genre")
     public GenreDTO createGenre(@RequestBody GenreDTO newGenre) {
         Genre genre = genreService.createGenre(newGenre.getGenreName());
@@ -41,8 +48,14 @@ public class GenreController {
     private GenreDTO toGenreDTO(Genre genre) {
         GenreDTO genreDTO = new GenreDTO();
         BeanUtils.copyProperties(genre, genreDTO);
+        //Release release = genre.getRelease();
+       // genreDTO.setReleases(genre.getReleases());
         return genreDTO;
     }
 
-
+    private Genre toGenre(GenreDTO genreDTO) {
+        Genre genre = new Genre();
+        BeanUtils.copyProperties(genreDTO, genre);
+        return genre;
+    }
 }

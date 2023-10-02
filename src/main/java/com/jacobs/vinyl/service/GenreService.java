@@ -2,6 +2,7 @@ package com.jacobs.vinyl.service;
 
 import com.jacobs.vinyl.repository.Genre;
 import com.jacobs.vinyl.repository.GenreRepository;
+import com.jacobs.vinyl.repository.GenreRepositoryOLD;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,10 +16,15 @@ public class GenreService {
     GenreRepository genreRepository;
 
     public List<Genre> getAllGenres() {
-        return genreRepository.findAll();
+
+        return (List<Genre>) genreRepository.findAll();
     }
-    @Transactional
+    //@Transactional
     public Genre createGenre(String genreName) {
-        return genreRepository.save(new Genre(genreName));
+        return (Genre) genreRepository.save(new Genre(genreName));
+    }
+
+    public Genre updateGenre(Genre genre) {
+        return genreRepository.save(genre);
     }
 }

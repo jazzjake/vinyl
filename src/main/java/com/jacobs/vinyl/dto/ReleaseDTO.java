@@ -1,25 +1,33 @@
 package com.jacobs.vinyl.dto;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.jacobs.vinyl.repository.Genre;
+import com.jacobs.vinyl.repository.Label;
 import com.jacobs.vinyl.repository.Release;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ReleaseDTO {
 
     private int releaseId;
     private String artist;
     private String title;
-    private String label;
-    private String year;
-    private List<Genre> genres;
+    private LabelDTO label;
+    private String releaseYear;
+    //@JsonManagedReference
+//    @JsonBackReference
+    private List<GenreDTO> genres = new ArrayList<>();
 
-    public ReleaseDTO(int id, String artist, String title, String label, String year) {
+
+
+    public ReleaseDTO(int id, String artist, String title, String year) {
         this.releaseId = id;
         this.artist = artist;
         this.title = title;
-        this.label = label;
-        this.year = year;
+        this.releaseYear = year;
     }
 
     public ReleaseDTO() {
@@ -49,27 +57,27 @@ public class ReleaseDTO {
         this.title = title;
     }
 
-    public String getLabel() {
+    public LabelDTO getLabel() {
         return label;
     }
 
-    public void setLabel(String label) {
+    public void setLabel(LabelDTO label) {
         this.label = label;
     }
 
-    public String getYear() {
-        return year;
+    public String getReleaseYear() {
+        return releaseYear;
     }
 
-    public void setYear(String year) {
-        this.year = year;
+    public void setReleaseYear(String year) {
+        this.releaseYear = year;
     }
 
-    public List<Genre> getGenres() {
+    public List<GenreDTO> getGenres() {
         return genres;
     }
 
-    public void setGenres(List<Genre> genres) {
+    public void setGenres(List<GenreDTO> genres) {
         this.genres = genres;
     }
 
@@ -80,7 +88,7 @@ public class ReleaseDTO {
                 ", artist='" + artist + '\'' +
                 ", title='" + title + '\'' +
                 ", label='" + label + '\'' +
-                ", year='" + year + '\'' +
+                ", year='" + releaseYear + '\'' +
                 '}';
     }
 }

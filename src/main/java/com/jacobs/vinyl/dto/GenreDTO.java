@@ -1,12 +1,18 @@
 package com.jacobs.vinyl.dto;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.jacobs.vinyl.repository.Release;
+
+import java.util.List;
 
 public class GenreDTO {
 
     private int genreId;
     private String genreName;
-    private Release release;
+    //@JsonBackReference
+//    @JsonManagedReference
+//    private List<Release> releases;
 
 
     public int getGenreId() {
@@ -25,11 +31,11 @@ public class GenreDTO {
         this.genreName = genreName;
     }
 
-    public Release getRelease() {
-        return release;
-    }
-
-    public void setRelease(Release release) {
-        this.release = release;
-    }
+//    public List<Release> getReleases() {
+//        return releases;
+//    }
+//
+//    public void setReleases(List<Release> releases) {
+//        this.releases = releases;
+//    }
 }

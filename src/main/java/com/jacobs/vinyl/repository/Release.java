@@ -1,5 +1,7 @@
 package com.jacobs.vinyl.repository;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -10,25 +12,29 @@ import java.util.List;
 public class Release {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    //@Column(name = "releaseId", nullable = false ) use to specify db column name & other properties
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@Column(name = "releaseId"  ) //use to specify db column name & other properties
     private int releaseId;
     private String artist;
     private String title;
-    private String label;
+    @ManyToOne
+    @JoinColumn(name="label_id", nullable = false)
+    private Label label;
     private String releaseYear;
 
     // mappedBy refers to property in Genre class
-    @OneToMany(mappedBy = "release", cascade = CascadeType.ALL)
+    //@JsonManagedReference
+    //@JsonBackReference
+    @ManyToMany()
     private List<Genre> genres = new ArrayList<>();
 
     public Release() {
     }
 
-    public Release(String artist, String title, String label) {
+    public Release(String artist, String title) {
         this.artist = artist;
         this.title = title;
-        this.label = label;
+
     }
 
     public String getArtist() {
@@ -47,11 +53,11 @@ public class Release {
         this.title = title;
     }
 
-    public String getLabel() {
+    public Label getLabel() {
         return label;
     }
 
-    public void setLabel(String label) {
+    public void setLabel(Label label) {
         this.label = label;
     }
 

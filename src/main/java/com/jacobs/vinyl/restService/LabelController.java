@@ -42,6 +42,11 @@ public class LabelController {
     private LabelDTO toLabelDTO(Label label) {
         LabelDTO labelDTO = new LabelDTO();
         BeanUtils.copyProperties(label, labelDTO);
+        for(Release release : label.getReleases()) {
+            ReleaseDTO releaseDTO = new ReleaseDTO();
+            BeanUtils.copyProperties(release, releaseDTO );
+            labelDTO.getReleases().add(releaseDTO);
+        }
         return labelDTO;
     }
 }
