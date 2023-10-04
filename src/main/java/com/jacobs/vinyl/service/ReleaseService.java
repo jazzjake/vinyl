@@ -3,6 +3,7 @@ package com.jacobs.vinyl.service;
 import com.jacobs.vinyl.repository.GenreRepository;
 import com.jacobs.vinyl.repository.Release;
 import com.jacobs.vinyl.repository.ReleaseRepository;
+import com.jacobs.vinyl.repository.TrackRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,13 +16,14 @@ import java.util.stream.StreamSupport;
 public class ReleaseService {
 
     private final ReleaseRepository releaseRepository;
-    private final GenreRepository genreRepository;
+    //private final GenreRepository genreRepository;
+    private final TrackRepository trackRepository;
 
     @Autowired
-    public ReleaseService(ReleaseRepository releaseRepository, GenreRepository genreRepository) {
+    public ReleaseService(ReleaseRepository releaseRepository, TrackRepository trackRepository) {
 
         this.releaseRepository = releaseRepository;
-        this.genreRepository = genreRepository;
+        this.trackRepository = trackRepository;
     }
 
     @Transactional
@@ -30,6 +32,8 @@ public class ReleaseService {
        // savedRelease = releaseRepository.findById(release.getReleaseId()).get();
         //savedRelease = getRelease(savedRelease.getReleaseId());
        //release.getGenres().forEach(g -> {g.addRelease(savedRelease); genreRepository.save(g);});
+        release.getTracks().forEach(track -> {
+            track.setRelease(release); trackRepository.save(track);});
         return savedRelease;
     }
 

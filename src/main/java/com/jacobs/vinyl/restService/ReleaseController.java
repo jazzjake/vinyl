@@ -2,10 +2,12 @@ package com.jacobs.vinyl.restService;
 
 import com.jacobs.vinyl.dto.GenreDTO;
 import com.jacobs.vinyl.dto.LabelDTO;
+import com.jacobs.vinyl.dto.TrackDTO;
 import com.jacobs.vinyl.repository.Genre;
 import com.jacobs.vinyl.repository.Label;
 import com.jacobs.vinyl.repository.Release;
 import com.jacobs.vinyl.dto.ReleaseDTO;
+import com.jacobs.vinyl.repository.Track;
 import com.jacobs.vinyl.service.ReleaseService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,6 +68,11 @@ public class ReleaseController {
             release.getGenres().add(genre);
         }
         Genre genre = new Genre();
+        for(TrackDTO trackDTO : releaseDTO.getTracks()) {
+            Track track = new Track();
+            BeanUtils.copyProperties(trackDTO, track);
+            release.getTracks().add(track);
+        }
 
         return release;
     }
@@ -81,6 +88,11 @@ public class ReleaseController {
             GenreDTO genreDTO = new GenreDTO();
             BeanUtils.copyProperties(genre, genreDTO);
             releaseDTO.getGenres().add(genreDTO);
+        }
+        for(Track track: release.getTracks()){
+            TrackDTO trackDTO = new TrackDTO();
+            BeanUtils.copyProperties(track, trackDTO);
+            releaseDTO.getTracks().add(trackDTO);
         }
         return releaseDTO;
     }

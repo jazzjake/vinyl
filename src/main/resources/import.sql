@@ -1,0 +1,3 @@
+INSERT INTO LABEL (LABEL_NAME) VALUES
+('Liberty');
+

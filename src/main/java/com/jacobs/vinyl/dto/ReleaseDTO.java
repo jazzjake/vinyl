@@ -15,11 +15,15 @@ public class ReleaseDTO {
     private int releaseId;
     private String artist;
     private String title;
+    private int noOfDiscs;
     private LabelDTO label;
     private String releaseYear;
     //@JsonManagedReference
 //    @JsonBackReference
     private List<GenreDTO> genres = new ArrayList<>();
+    @JsonManagedReference
+    //@JsonBackReference
+    private List<TrackDTO> tracks = new ArrayList<>();
 
 
 
@@ -79,6 +83,22 @@ public class ReleaseDTO {
 
     public void setGenres(List<GenreDTO> genres) {
         this.genres = genres;
+    }
+
+    public int getNoOfDiscs() {
+        return noOfDiscs;
+    }
+
+    public void setNoOfDiscs(int noOfDiscs) {
+        this.noOfDiscs = noOfDiscs;
+    }
+
+    public List<TrackDTO> getTracks() {
+        return tracks;
+    }
+
+    public void setTracks(List<TrackDTO> tracks) {
+        this.tracks = tracks;
     }
 
     @Override

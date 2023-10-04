@@ -14,6 +14,7 @@ public class Label {
     @Column(name = "label_id")
     private int id;
 
+    @Column(unique=true)
     private String labelName;
 
     @OneToMany(mappedBy = "label")

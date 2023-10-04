@@ -17,6 +17,9 @@ public class Release {
     private int releaseId;
     private String artist;
     private String title;
+    @Column(nullable = false)
+    private int noOfDiscs;
+
     @ManyToOne
     @JoinColumn(name="label_id", nullable = false)
     private Label label;
@@ -27,6 +30,9 @@ public class Release {
     //@JsonBackReference
     @ManyToMany()
     private List<Genre> genres = new ArrayList<>();
+
+    @OneToMany(mappedBy = "release", cascade=CascadeType.PERSIST)
+    private List<Track> tracks = new ArrayList<>();
 
     public Release() {
     }
@@ -79,6 +85,22 @@ public class Release {
 
     public void setGenres(List<Genre> genres) {
         this.genres = genres;
+    }
+
+    public int getNoOfDiscs() {
+        return noOfDiscs;
+    }
+
+    public void setNoOfDiscs(int noOfDiscs) {
+        this.noOfDiscs = noOfDiscs;
+    }
+
+    public List<Track> getTracks() {
+        return tracks;
+    }
+
+    public void setTracks(List<Track> tracks) {
+        this.tracks = tracks;
     }
 
     @Override
