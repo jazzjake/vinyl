@@ -1,5 +1,6 @@
 package com.jacobs.vinyl.repository;
 
+import com.jacobs.vinyl.model.Genre;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;

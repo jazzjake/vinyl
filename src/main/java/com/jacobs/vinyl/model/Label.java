@@ -1,4 +1,4 @@
-package com.jacobs.vinyl.repository;
+package com.jacobs.vinyl.model;
 
 import jakarta.persistence.*;
 

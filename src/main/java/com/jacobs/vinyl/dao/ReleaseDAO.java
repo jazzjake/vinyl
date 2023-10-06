@@ -1,6 +1,6 @@
 package com.jacobs.vinyl.dao;
 
-import com.jacobs.vinyl.repository.Release;
+import com.jacobs.vinyl.model.Release;
 
 import java.sql.*;
 import java.util.ArrayList;

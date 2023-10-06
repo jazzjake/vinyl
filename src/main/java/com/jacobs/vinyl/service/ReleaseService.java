@@ -1,7 +1,6 @@
 package com.jacobs.vinyl.service;
 
-import com.jacobs.vinyl.repository.GenreRepository;
-import com.jacobs.vinyl.repository.Release;
+import com.jacobs.vinyl.model.Release;
 import com.jacobs.vinyl.repository.ReleaseRepository;
 import com.jacobs.vinyl.repository.TrackRepository;
 import jakarta.transaction.Transactional;

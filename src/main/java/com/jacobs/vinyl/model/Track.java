@@ -1,5 +1,6 @@
-package com.jacobs.vinyl.repository;
+package com.jacobs.vinyl.model;
 
+import com.jacobs.vinyl.model.Release;
 import jakarta.persistence.*;
 
 @Entity

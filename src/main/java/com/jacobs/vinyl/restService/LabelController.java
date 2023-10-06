@@ -2,9 +2,10 @@ package com.jacobs.vinyl.restService;
 
 import com.jacobs.vinyl.dto.LabelDTO;
 import com.jacobs.vinyl.dto.ReleaseDTO;
-import com.jacobs.vinyl.repository.Label;
-import com.jacobs.vinyl.repository.Release;
+import com.jacobs.vinyl.model.Label;
+import com.jacobs.vinyl.model.Release;
 import com.jacobs.vinyl.service.LabelService;
+import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,7 +27,7 @@ public class LabelController {
     }
 
     @PostMapping(value = "/label")
-    public LabelDTO createLabel(@RequestBody LabelDTO newLabel) {
+    public LabelDTO createLabel(@Valid @RequestBody LabelDTO newLabel) {
         Label label =labelService.createLabel(newLabel.getLabelName());
         return toLabelDTO(label);
     }

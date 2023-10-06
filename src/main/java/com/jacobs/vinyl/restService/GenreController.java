@@ -1,10 +1,7 @@
 package com.jacobs.vinyl.restService;
 
 import com.jacobs.vinyl.dto.GenreDTO;
-import com.jacobs.vinyl.dto.LabelDTO;
-import com.jacobs.vinyl.repository.Genre;
-import com.jacobs.vinyl.repository.Label;
-import com.jacobs.vinyl.repository.Release;
+import com.jacobs.vinyl.model.Genre;
 import com.jacobs.vinyl.service.GenreService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,14 +1,9 @@
 package com.jacobs.vinyl.dto;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.jacobs.vinyl.repository.Genre;
-import com.jacobs.vinyl.repository.Label;
-import com.jacobs.vinyl.repository.Release;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class ReleaseDTO {
 
@@ -18,6 +13,8 @@ public class ReleaseDTO {
     private int noOfDiscs;
     private LabelDTO label;
     private String releaseYear;
+    private boolean mono;
+    private String catalogNumber;
     //@JsonManagedReference
 //    @JsonBackReference
     private List<GenreDTO> genres = new ArrayList<>();
@@ -99,6 +96,22 @@ public class ReleaseDTO {
 
     public void setTracks(List<TrackDTO> tracks) {
         this.tracks = tracks;
+    }
+
+    public boolean isMono() {
+        return mono;
+    }
+
+    public void setMono(boolean mono) {
+        this.mono = mono;
+    }
+
+    public String getCatalogNumber() {
+        return catalogNumber;
+    }
+
+    public void setCatalogNumber(String catalogNumber) {
+        this.catalogNumber = catalogNumber;
     }
 
     @Override

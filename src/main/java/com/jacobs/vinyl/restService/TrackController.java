@@ -1,8 +1,8 @@
 package com.jacobs.vinyl.restService;
 
-import com.jacobs.vinyl.dto.LabelDTO;
+import com.jacobs.vinyl.dto.ReleaseDTO;
 import com.jacobs.vinyl.dto.TrackDTO;
-import com.jacobs.vinyl.repository.Track;
+import com.jacobs.vinyl.model.Track;
 import com.jacobs.vinyl.service.TrackService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +32,9 @@ public class TrackController {
     private TrackDTO toTrackDTO(Track track) {
         TrackDTO trackDTO = new TrackDTO();
         BeanUtils.copyProperties(track, trackDTO);
+        ReleaseDTO releaseDTO = new ReleaseDTO();
+        BeanUtils.copyProperties(track.getRelease(), releaseDTO);
+        trackDTO.setRelease(releaseDTO);
         return trackDTO;
     }
 }

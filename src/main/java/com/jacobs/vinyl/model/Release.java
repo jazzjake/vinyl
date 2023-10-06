@@ -1,7 +1,5 @@
-package com.jacobs.vinyl.repository;
+package com.jacobs.vinyl.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -19,6 +17,9 @@ public class Release {
     private String title;
     @Column(nullable = false)
     private int noOfDiscs;
+    @Column(nullable = false)
+    private boolean mono;
+    private String catalogNumber;
 
     @ManyToOne
     @JoinColumn(name="label_id", nullable = false)
@@ -101,6 +102,22 @@ public class Release {
 
     public void setTracks(List<Track> tracks) {
         this.tracks = tracks;
+    }
+
+    public boolean getMono() {
+        return mono;
+    }
+
+    public void setMono(boolean mono) {
+        this.mono = mono;
+    }
+
+    public String getCatalogNumber() {
+        return catalogNumber;
+    }
+
+    public void setCatalogNumber(String catalogNumber) {
+        this.catalogNumber = catalogNumber;
     }
 
     @Override

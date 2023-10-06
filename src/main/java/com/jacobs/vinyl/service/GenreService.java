@@ -1,9 +1,7 @@
 package com.jacobs.vinyl.service;
 
-import com.jacobs.vinyl.repository.Genre;
+import com.jacobs.vinyl.model.Genre;
 import com.jacobs.vinyl.repository.GenreRepository;
-import com.jacobs.vinyl.repository.GenreRepositoryOLD;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

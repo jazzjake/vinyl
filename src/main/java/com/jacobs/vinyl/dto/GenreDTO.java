@@ -1,11 +1,5 @@
 package com.jacobs.vinyl.dto;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.jacobs.vinyl.repository.Release;
-
-import java.util.List;
-
 public class GenreDTO {
 
     private int genreId;

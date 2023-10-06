@@ -1,6 +1,6 @@
 package com.jacobs.vinyl.service;
 
-import com.jacobs.vinyl.repository.Track;
+import com.jacobs.vinyl.model.Track;
 import com.jacobs.vinyl.repository.TrackRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

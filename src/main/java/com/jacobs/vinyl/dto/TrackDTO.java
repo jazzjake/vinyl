@@ -1,9 +1,6 @@
 package com.jacobs.vinyl.dto;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.jacobs.vinyl.repository.Release;
-import jakarta.persistence.ManyToOne;
 
 public class TrackDTO {
     private int trackId;
@@ -13,7 +10,7 @@ public class TrackDTO {
     private String trackLength;
     //@JsonManagedReference
     @JsonBackReference
-    private Release release;
+    private ReleaseDTO release;
 
     public TrackDTO() {
     }
@@ -58,11 +55,11 @@ public class TrackDTO {
         this.trackLength = trackLength;
     }
 
-    public Release getRelease() {
+    public ReleaseDTO getRelease() {
         return release;
     }
 
-    public void setRelease(Release release) {
+    public void setRelease(ReleaseDTO release) {
         this.release = release;
     }
 }
